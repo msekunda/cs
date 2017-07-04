@@ -1,7 +1,7 @@
 package com.cs.validation;
 
 import com.cs.domain.Forward;
-import com.cs.validation.trade.SupportedCustomersValidation;
+import com.cs.validation.condition.trade.SupportedCustomersValidation;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

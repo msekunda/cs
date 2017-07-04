@@ -2,7 +2,7 @@ package com.cs.validation;
 
 
 import com.cs.domain.Forward;
-import com.cs.validation.trade.TradeDateBeforeValueDateValidation;
+import com.cs.validation.condition.trade.TradeDateBeforeValueDateValidation;
 import org.junit.Test;
 
 import java.time.LocalDate;

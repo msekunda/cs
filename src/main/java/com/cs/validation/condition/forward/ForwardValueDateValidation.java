@@ -1,15 +1,15 @@
-package com.cs.validation.spot;
+package com.cs.validation.condition.forward;
 
-import com.cs.domain.Spot;
+import com.cs.domain.Forward;
 import com.cs.validation.ValidationCondition;
 import com.cs.validation.ValidationResult;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpotValueDateValidation implements ValidationCondition<Spot> {
+public class ForwardValueDateValidation implements ValidationCondition<Forward> {
 
     @Override
-    public ValidationResult validate(final Spot data) {
+    public ValidationResult validate(final Forward data) {
         //TODO
         return ValidationResult.valid();
     }

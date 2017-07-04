@@ -1,4 +1,4 @@
-package com.cs.validation.trade;
+package com.cs.validation.condition.trade;
 
 import com.cs.domain.Trade;
 import com.cs.validation.ValidationCondition;
@@ -6,7 +6,6 @@ import com.cs.validation.ValidationResult;
 import com.cs.validation.service.CurrenciesPairConverter;
 import com.cs.validation.service.FixerClient;
 import com.cs.validation.service.Pair;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

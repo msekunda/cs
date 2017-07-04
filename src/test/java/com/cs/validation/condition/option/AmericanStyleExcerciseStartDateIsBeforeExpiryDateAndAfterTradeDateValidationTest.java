@@ -1,4 +1,4 @@
-package com.cs.validation.option;
+package com.cs.validation.condition.option;
 
 import com.cs.domain.Option;
 import com.cs.validation.ValidationResult;
@@ -13,7 +13,7 @@ import static org.mockito.Mockito.when;
 public class AmericanStyleExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDateValidationTest {
 
     @Test
-    public void shouldReturnValidResultWhenExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDate(){
+    public void shouldReturnValidResultWhenExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDate() {
         //given
         final Option option = mock(Option.class);
         when(option.getStyle()).thenReturn("AMERICAN");
@@ -29,7 +29,7 @@ public class AmericanStyleExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDateV
     }
 
     @Test
-    public void shouldReturnInvalidResultWhenExcerciseStartDateIsAfterExpiryDateAndAfterTradeDate(){
+    public void shouldReturnInvalidResultWhenExcerciseStartDateIsAfterExpiryDateAndAfterTradeDate() {
         //given
         final Option option = mock(Option.class);
         when(option.getStyle()).thenReturn("AMERICAN");

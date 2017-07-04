@@ -1,4 +1,4 @@
-package com.cs.validation.option;
+package com.cs.validation.condition.option;
 
 import com.cs.domain.Option;
 import com.cs.validation.ValidationResult;

@@ -1,4 +1,4 @@
-package com.cs.validation.trade;
+package com.cs.validation.condition.trade;
 
 import com.cs.domain.Forward;
 import com.cs.validation.ValidationResult;

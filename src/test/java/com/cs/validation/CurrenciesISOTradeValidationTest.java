@@ -1,9 +1,9 @@
 package com.cs.validation;
 
 import com.cs.domain.Forward;
+import com.cs.validation.condition.trade.CurrenciesISOTradeValidation;
 import com.cs.validation.service.CurrenciesPairConverter;
 import com.cs.validation.service.CurrencyISO;
-import com.cs.validation.trade.CurrenciesISOTradeValidation;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

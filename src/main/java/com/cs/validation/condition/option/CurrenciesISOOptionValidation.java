@@ -1,10 +1,9 @@
-package com.cs.validation.option;
+package com.cs.validation.condition.option;
 
 import com.cs.domain.Option;
 import com.cs.validation.ValidationCondition;
 import com.cs.validation.ValidationResult;
 import com.cs.validation.service.CurrencyISO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

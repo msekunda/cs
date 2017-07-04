@@ -1,4 +1,4 @@
-package com.cs.validation.option;
+package com.cs.validation.condition.option;
 
 import com.cs.domain.Option;
 import com.cs.validation.ValidationCondition;
@@ -13,7 +13,7 @@ public class AmericanOrEuropeanStyleValidation implements ValidationCondition<Op
     @Override
     public ValidationResult validate(final Option data) {
         return "EUROPEAN".equals(data.getStyle()) || "AMERICAN".equals(data.getStyle())
-                        ? ValidationResult.valid()
-                        : ValidationResult.invalid(VALIDATION_ERROR_MESSAGE);
+                ? ValidationResult.valid()
+                : ValidationResult.invalid(VALIDATION_ERROR_MESSAGE);
     }
 }
