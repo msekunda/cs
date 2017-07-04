@@ -37,9 +37,8 @@ public class TradeValidationController {
     @RequestMapping(value = "/trade_validation/option", method = RequestMethod.POST)
     @ResponseBody
     ResponseEntity<ValidationInfo> validateOption(@Valid @RequestBody final Option option) {
-        final Stream<ValidationResult> optionsValidationResults = optionConditions
-                .stream()
-                .map(x -> x.validate(option));
+        final Stream<ValidationResult> optionsValidationResults = optionConditions.stream()
+                                                                                  .map(x -> x.validate(option));
         return createValidationInfoForResults(concat(tradesValidationResults(option), optionsValidationResults));
     }
 
