@@ -1,6 +1,6 @@
 package com.cs.validation.condition.option;
 
-import com.cs.domain.Option;
+import com.cs.domain.Trade;
 import com.cs.validation.ValidationResult;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class AmericanOrEuropeanStyleValidationTest {
     @Test
     public void shouldReturnValidWhenStyleIsEuropean() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getStyle()).thenReturn("EUROPEAN");
 
         //when
@@ -27,7 +27,7 @@ public class AmericanOrEuropeanStyleValidationTest {
     @Test
     public void shouldReturnInvalidWhenStyleIsNotSupported() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getStyle()).thenReturn("DUMMY");
 
         //when

@@ -1,7 +1,7 @@
-package com.cs.validation;
+package com.cs.validation.condition.trade;
 
-import com.cs.domain.Forward;
-import com.cs.validation.condition.trade.SupportedCustomersValidation;
+import com.cs.domain.Trade;
+import com.cs.validation.ValidationResult;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,11 +14,11 @@ public class SupportedCustomersValidationTest {
     @Test
     public void shouldReturnNotValidWhenCustomerIsNotSupported() {
         //given
-        final Forward forward = mock(Forward.class);
-        when(forward.getCustomer()).thenReturn("dummyCustomer");
+        final Trade trade = mock(Trade.class);
+        when(trade.getCustomer()).thenReturn("dummyCustomer");
 
         //when
-        ValidationResult result = new SupportedCustomersValidation().validate(forward);
+        ValidationResult result = new SupportedCustomersValidation().validate(trade);
 
         //then
         assertThat(result.isValid()).isFalse();
@@ -27,11 +27,11 @@ public class SupportedCustomersValidationTest {
     @Test
     public void shouldReturnValidWhenCustomerIsSupported() {
         //given
-        final Forward forward = mock(Forward.class);
-        when(forward.getCustomer()).thenReturn("PLUTO2");
+        final Trade trade = mock(Trade.class);
+        when(trade.getCustomer()).thenReturn("PLUTO2");
 
         //when
-        ValidationResult result = new SupportedCustomersValidation().validate(forward);
+        ValidationResult result = new SupportedCustomersValidation().validate(trade);
 
         //then
         assertThat(result.isValid()).isTrue();

@@ -1,7 +1,6 @@
 package com.cs.domain;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,39 +8,42 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = Forward.class, name = "Forward"),
-        @JsonSubTypes.Type(value = Spot.class, name = "Spot"),
-        @JsonSubTypes.Type(value = Option.class, name = "VanillaOption")
-})
 @Getter
-@Setter
-public abstract class Trade {
+@AllArgsConstructor
+public class Trade {
 
     @NotNull
-    private String customer;
+    private final String customer;
     @NotNull
-    private String ccyPair;
+    private final String ccyPair;
     @NotNull
-    private DIRECTION direction;
+    private final DIRECTION direction;
     @NotNull
-    private LocalDate tradeDate;
+    private final LocalDate tradeDate;
     @NotNull
-    private BigDecimal amount1;
+    private final BigDecimal amount1;
     @NotNull
-    private BigDecimal amount2;
+    private final BigDecimal amount2;
     @NotNull
-    private LocalDate valueDate;
+    private final LocalDate valueDate;
     @NotNull
-    private String legalEntity;
+    private final String legalEntity;
     @NotNull
-    private String trader;
+    private final String trader;
     @NotNull
-    private BigDecimal rate;
+    private final String type;
+    private final BigDecimal rate;
+    private final String style;
+    private final String strategy;
+    private final String payCcy;
+    private final BigDecimal premium;
+    private final String premiumCcy;
+    private final String premiumType;
+    private final LocalDate premiumDate;
+    private final LocalDate deliveryDate;
+    private final LocalDate expiryDate;
+    private final LocalDate excerciseStartDate;
+
 
     enum DIRECTION {BUY, SELL}
 

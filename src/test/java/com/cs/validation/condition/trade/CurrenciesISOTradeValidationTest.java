@@ -1,7 +1,7 @@
-package com.cs.validation;
+package com.cs.validation.condition.trade;
 
-import com.cs.domain.Forward;
-import com.cs.validation.condition.trade.CurrenciesISOTradeValidation;
+import com.cs.domain.Trade;
+import com.cs.validation.ValidationResult;
 import com.cs.validation.service.CurrenciesPairConverter;
 import com.cs.validation.service.CurrencyISO;
 import org.junit.Test;
@@ -16,10 +16,10 @@ public class CurrenciesISOTradeValidationTest {
     @Test
     public void shouldReturnValidWhenCurrenciesHaveValidISO() {
         //given
-        final Forward forward = mock(Forward.class);
-        when(forward.getCcyPair()).thenReturn("EURUSD");
+        final Trade trade = mock(Trade.class);
+        when(trade.getCcyPair()).thenReturn("EURUSD");
         //when
-        ValidationResult result = new CurrenciesISOTradeValidation(new CurrencyISO(), new CurrenciesPairConverter()).validate(forward);
+        ValidationResult result = new CurrenciesISOTradeValidation(new CurrencyISO(), new CurrenciesPairConverter()).validate(trade);
 
         //then
         assertThat(result.isValid()).isTrue();
@@ -28,21 +28,21 @@ public class CurrenciesISOTradeValidationTest {
     @Test
     public void shouldReturnInvalidWhenCurrenciesHaveNotValidData() {
         //given
-        final Forward forward = mock(Forward.class);
-        when(forward.getCcyPair()).thenReturn("EU");
+        final Trade trade = mock(Trade.class);
+        when(trade.getCcyPair()).thenReturn("EU");
         //when
         final CurrenciesISOTradeValidation currenciesISOTradeValidation = new CurrenciesISOTradeValidation(new CurrencyISO(), new CurrenciesPairConverter());
-        assertThatThrownBy(() -> currenciesISOTradeValidation.validate(forward))
+        assertThatThrownBy(() -> currenciesISOTradeValidation.validate(trade))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void shouldReturnInvalidWhenCurrenciesHaveNotValidISOData() {
         //given
-        final Forward forward = mock(Forward.class);
-        when(forward.getCcyPair()).thenReturn("EURQWE");
+        final Trade trade = mock(Trade.class);
+        when(trade.getCcyPair()).thenReturn("EURQWE");
         //when
-        ValidationResult result = new CurrenciesISOTradeValidation(new CurrencyISO(), new CurrenciesPairConverter()).validate(forward);
+        ValidationResult result = new CurrenciesISOTradeValidation(new CurrencyISO(), new CurrenciesPairConverter()).validate(trade);
 
         //then
         assertThat(result.isValid()).isFalse();

@@ -1,6 +1,6 @@
 package com.cs.validation.condition.option;
 
-import com.cs.domain.Option;
+import com.cs.domain.Trade;
 import com.cs.validation.ValidationResult;
 import com.cs.validation.service.CurrencyISO;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class CurrenciesISOOptionValidationTest {
     @Test
     public void shouldReturnValidWhenCurrencyIsISOValid() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getPayCcy()).thenReturn("USD");
         when(option.getPremiumCcy()).thenReturn("EUR");
 
@@ -28,7 +28,7 @@ public class CurrenciesISOOptionValidationTest {
     @Test
     public void shouldReturnInvalidWhenCurrencyIsNotISOValid() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getPayCcy()).thenReturn("ASD");
         when(option.getPremiumCcy()).thenReturn("ZXC");
 

@@ -5,26 +5,24 @@ import com.cs.validation.ValidationCondition;
 import com.cs.validation.ValidationResult;
 import com.cs.validation.service.CurrenciesPairConverter;
 import com.cs.validation.service.FixerClient;
-import com.cs.validation.service.Pair;
-import org.springframework.stereotype.Component;
+import javaslang.Tuple2;
 
-@Component
-public class ValueDateIsNotWeekendOrNonWorkingDay implements ValidationCondition<Trade> {
+public class ValueDateIsNotWeekendOrNonWorkingDay implements ValidationCondition {
 
     private static final String VALIDATION_ERROR_MESSAGE = "Value date for currencies is weekend or non working day.";
 
     private final FixerClient fixerClient;
     private final CurrenciesPairConverter currenciesPairConverter;
 
-    ValueDateIsNotWeekendOrNonWorkingDay(final FixerClient fixerClient, final CurrenciesPairConverter currenciesPairConverter) {
+    public ValueDateIsNotWeekendOrNonWorkingDay(final FixerClient fixerClient, final CurrenciesPairConverter currenciesPairConverter) {
         this.fixerClient = fixerClient;
         this.currenciesPairConverter = currenciesPairConverter;
     }
 
     @Override
     public ValidationResult validate(final Trade data) {
-        final Pair<String, String> currencies = currenciesPairConverter.convert(data.getCcyPair());
-        return fixerClient.hasCurrencyRateForDate(currencies.getFirst(), data.getValueDate()) && fixerClient.hasCurrencyRateForDate(currencies.getSecond(), data.getValueDate())
+        final Tuple2<String, String> currencies = currenciesPairConverter.convert(data.getCcyPair());
+        return fixerClient.hasCurrencyRateForDate(currencies._1, data.getValueDate()) && fixerClient.hasCurrencyRateForDate(currencies._2, data.getValueDate())
                 ? ValidationResult.valid()
                 : ValidationResult.invalid(VALIDATION_ERROR_MESSAGE);
     }

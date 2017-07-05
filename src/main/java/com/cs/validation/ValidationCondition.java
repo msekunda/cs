@@ -1,7 +1,9 @@
 package com.cs.validation;
 
-public interface ValidationCondition<T> {
+import com.cs.domain.Trade;
 
-    ValidationResult validate(final T data);
+public interface ValidationCondition {
+
+    ValidationResult validate(final Trade data);
 
 }

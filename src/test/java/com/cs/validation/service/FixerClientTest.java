@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -29,8 +30,13 @@ public class FixerClientTest {
     @Autowired
     private FixerClient fixerClient;
 
-    private MockRestServiceServer server;
+    @MockBean
+    private CurrencyISO currencyISO;
 
+    @MockBean
+    private CurrenciesPairConverter currenciesPairConverter;
+
+    private MockRestServiceServer server;
 
     @Before
     public void setUp() {

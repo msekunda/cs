@@ -1,25 +1,18 @@
 package com.cs;
 
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.cs.domain.Trade;
 import lombok.Getter;
 
 @Getter
 class ValidationInfo {
+    private final Trade trade;
     private final boolean valid;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private final String error;
 
-    private ValidationInfo(boolean valid, String error) {
+    public ValidationInfo(final Trade trade, final boolean valid, final String error) {
+        this.trade = trade;
         this.valid = valid;
         this.error = error;
-    }
-
-    static ValidationInfo ok() {
-        return new ValidationInfo(true, null);
-    }
-
-    static ValidationInfo error(final String errorMessage) {
-        return new ValidationInfo(false, errorMessage);
     }
 }

@@ -5,11 +5,9 @@ import com.cs.validation.ValidationCondition;
 import com.cs.validation.ValidationResult;
 import com.cs.validation.service.CurrenciesPairConverter;
 import com.cs.validation.service.CurrencyISO;
-import com.cs.validation.service.Pair;
-import org.springframework.stereotype.Component;
+import javaslang.Tuple2;
 
-@Component
-public class CurrenciesISOTradeValidation implements ValidationCondition<Trade> {
+public class CurrenciesISOTradeValidation implements ValidationCondition {
 
     private static final String VALIDATION_ERROR_MESSAGE_WRONG_ISO = "Wrong ISO format for currency pair %s. ";
 
@@ -23,9 +21,9 @@ public class CurrenciesISOTradeValidation implements ValidationCondition<Trade> 
 
     @Override
     public ValidationResult validate(final Trade data) {
-        final Pair<String, String> currencyPair = currenciesPairConverter.convert(data.getCcyPair());
+        final Tuple2<String, String> currencyPair = currenciesPairConverter.convert(data.getCcyPair());
 
-        return currencyISO.checkValidISO(currencyPair.getFirst()) && currencyISO.checkValidISO(currencyPair.getSecond())
+        return currencyISO.checkValidISO(currencyPair._1) && currencyISO.checkValidISO(currencyPair._2)
                 ? ValidationResult.valid()
                 : ValidationResult.invalid(String.format(VALIDATION_ERROR_MESSAGE_WRONG_ISO, data.getCcyPair()));
 

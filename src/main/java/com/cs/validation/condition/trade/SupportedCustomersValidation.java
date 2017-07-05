@@ -3,13 +3,11 @@ package com.cs.validation.condition.trade;
 import com.cs.domain.Trade;
 import com.cs.validation.ValidationCondition;
 import com.cs.validation.ValidationResult;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Component
-public class SupportedCustomersValidation implements ValidationCondition<Trade> {
+public class SupportedCustomersValidation implements ValidationCondition {
 
     private static final String VALIDATION_ERROR_MESSAGE = "Customer is not supported.";
     private static final List SUPPORTED_CUSTOMERS = Arrays.asList(

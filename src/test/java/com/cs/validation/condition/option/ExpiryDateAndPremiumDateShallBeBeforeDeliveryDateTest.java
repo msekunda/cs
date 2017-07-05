@@ -1,6 +1,6 @@
 package com.cs.validation.condition.option;
 
-import com.cs.domain.Option;
+import com.cs.domain.Trade;
 import com.cs.validation.ValidationResult;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class ExpiryDateAndPremiumDateShallBeBeforeDeliveryDateTest {
     @Test
     public void shouldReturnValidResultWhenExpiryDateAndPremiumDataIsBeforeDeliveryDate() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getExpiryDate()).thenReturn(LocalDate.of(2017, 1, 10));
         when(option.getPremiumDate()).thenReturn(LocalDate.of(2017, 1, 11));
         when(option.getDeliveryDate()).thenReturn(LocalDate.of(2017, 1, 12));
@@ -31,7 +31,7 @@ public class ExpiryDateAndPremiumDateShallBeBeforeDeliveryDateTest {
     @Test
     public void shouldReturnInvalidResultWhenExpiryDateIsNotBeforeDeliveryDate() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getExpiryDate()).thenReturn(LocalDate.of(2017, 1, 20));
         when(option.getPremiumDate()).thenReturn(LocalDate.of(2017, 1, 11));
         when(option.getDeliveryDate()).thenReturn(LocalDate.of(2017, 1, 12));
@@ -47,7 +47,7 @@ public class ExpiryDateAndPremiumDateShallBeBeforeDeliveryDateTest {
     @Test
     public void shouldReturnInvalidResultWhenPremiumDateIsNotBeforeDeliveryDate() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getExpiryDate()).thenReturn(LocalDate.of(2017, 1, 10));
         when(option.getPremiumDate()).thenReturn(LocalDate.of(2017, 1, 20));
         when(option.getDeliveryDate()).thenReturn(LocalDate.of(2017, 1, 12));

@@ -3,10 +3,8 @@ package com.cs.validation.condition.trade;
 import com.cs.domain.Trade;
 import com.cs.validation.ValidationCondition;
 import com.cs.validation.ValidationResult;
-import org.springframework.stereotype.Component;
 
-@Component
-public class TradeDateBeforeValueDateValidation implements ValidationCondition<Trade> {
+public class TradeDateBeforeValueDateValidation implements ValidationCondition {
 
     private static final String VALIDATION_ERROR_MESSAGE = "Trade date is not before value date.";
 

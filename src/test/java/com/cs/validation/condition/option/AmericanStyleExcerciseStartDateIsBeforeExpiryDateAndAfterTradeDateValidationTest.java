@@ -1,6 +1,6 @@
 package com.cs.validation.condition.option;
 
-import com.cs.domain.Option;
+import com.cs.domain.Trade;
 import com.cs.validation.ValidationResult;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class AmericanStyleExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDateV
     @Test
     public void shouldReturnValidResultWhenExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDate() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getStyle()).thenReturn("AMERICAN");
         when(option.getExcerciseStartDate()).thenReturn(LocalDate.of(2017, 1, 18));
         when(option.getExpiryDate()).thenReturn(LocalDate.of(2017, 1, 19));
@@ -31,7 +31,7 @@ public class AmericanStyleExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDateV
     @Test
     public void shouldReturnInvalidResultWhenExcerciseStartDateIsAfterExpiryDateAndAfterTradeDate() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getStyle()).thenReturn("AMERICAN");
         when(option.getExcerciseStartDate()).thenReturn(LocalDate.of(2017, 1, 20));
         when(option.getExpiryDate()).thenReturn(LocalDate.of(2017, 1, 19));
@@ -47,7 +47,7 @@ public class AmericanStyleExcerciseStartDateIsBeforeExpiryDateAndAfterTradeDateV
     @Test
     public void shouldReturnInvalidResultWhenExcerciseStartDateIsAfterExpiryDateAndBeforeTradeDate() {
         //given
-        final Option option = mock(Option.class);
+        final Trade option = mock(Trade.class);
         when(option.getStyle()).thenReturn("AMERICAN");
         when(option.getExcerciseStartDate()).thenReturn(LocalDate.of(2017, 1, 21));
         when(option.getExpiryDate()).thenReturn(LocalDate.of(2017, 1, 19));
